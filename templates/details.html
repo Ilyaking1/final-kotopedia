@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DETAILS</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="/">Назад</a>
+    <h1>Кот {{cat['name']}}</h1>
+    <img style="height: 100px;" src="{{ cat['photo'] }}"/>
+    <p></p>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Описание</h5>
+        <p class="card-text">{{cat['description']}}</p>
+      </div>
+    </div>
+    <span class="badge badge-success">Дата: {{ cat['date'] }}</span>
+    <h6>------------------------------------------------------------------------------------------------------</h6>
+    <p>
+    <div class="upvotesComponent">
+        <div class="upvote">
+            <a href="/like/{{ id }}"><i class="icon ion-chevron-up"></i></a>
+        </div>
+        <div style="font-size: 22px;">{{ cat['likes'] }}</div>
+        <div class="downvote">
+            <a href="/dislike/{{ id }}"><i class="icon ion-chevron-down"></i></a>
+        </div>
+    </div>
+    <p>
+        <strong>Комментарии:</strong>
+    </p>
+    {% for comment in cat['comments'] %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h4>{{ comment['author'] }} : {{ comment['text'] }}</h4>
+        <span class="badge badge-light"><small>Дата: {{ comment['date'] }}</small></span>
+    </div>
+</div>
+<p></p>
+    {% endfor %}
+    {% include 'coment.html' %}
+{% endblock %}
+</body>
+</html>

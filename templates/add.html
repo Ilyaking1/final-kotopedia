@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавление кота</h1>
+
+<form action="/add" method="POST">
+    <p>Имя: <input type="text" name="name" /></p>
+    <p>Фото: <input type="text" name="photo" /></p>
+    <p>Описание:<br>
+        <textarea name="description"></textarea>
+    </p>
+    <input type="submit" value="Добавить"/>
+</form>
+{% endblock %}
+</body>
+</html>
