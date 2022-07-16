@@ -7,10 +7,60 @@ file = open('cat.txt', 'r', encoding='utf-8')
 cats = json.loads(file.read())
 file.close()
 
+ooo = {}
+
+@app.route('/parol', methods=['GET'])
+def parol_get():
+    flag = ''
+    return render_template('parol.html', cats=cats, flag=flag)
+
+@app.route('/parol', methods=['POST'])
+def parol_post():
+    global ooo
+    file = open('cat.txt', 'r', encoding='utf-8')
+    cat = json.loads(file.read())
+    file.close()
+    i = ooo
+    if request.form['pasword'] == '630303' and request.form['name'] == 'imeliorut@gmail.com':
+        cat.pop(cat.index(i))
+        qwerty = json.dumps(cat)
+        file = open('cat.txt', 'w', encoding='utf-8')
+        file.write(qwerty)
+        file.close()
+        return redirect('/')
+    flag = ' d-none'
+    return redirect('/parol')
+
+@app.route('/del', methods=['GET'])
+def delete_get():
+    return render_template('delete.html', cats=cats)
+
+@app.route('/del', methods=['POST'])
+def delete_post():
+    global ooo
+    file = open('cat.txt', 'r', encoding='utf-8')
+    cat = json.loads(file.read())
+    file.close()
+    for i in cat:
+        if request.form['name'] ==  i['name']:
+            ooo = i
+            return redirect('/parol')
+    return redirect('/del')
+
 @app.route('/', methods=['GET'])
 def index():
+    file = open('cat.txt', 'r', encoding='utf-8')
+    cats = json.loads(file.read())
+    file.close()
     return render_template('index.html', cats=cats)
 
+@app.route('/spravka', methods=['GET'])
+def abc():
+    return render_template('info.html')
+
+@app.route('/konf', methods=['GET'])
+def vision():
+    return render_template('konfi.html')
 
 @app.route('/add', methods=['GET'])
 def add_form():
@@ -40,6 +90,9 @@ def add():
 
 @app.route('/cats/<id>', methods=['GET'])
 def details(id):
+    file = open('cat.txt', 'r', encoding='utf-8')
+    cats = json.loads(file.read())
+    file.close()
     cat = cats[int(id) - 1]
     return render_template('details.html', cat=cat, id=id)
 

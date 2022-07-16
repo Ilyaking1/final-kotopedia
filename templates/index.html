@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>INDEX</title>
+    <title>BASE</title>
 </head>
 <body>
 {% extends "base.html" %}
@@ -14,8 +14,10 @@
         <h2> Наши коты</h2>
     </div>
     <div class="col">
+        <a class="float-right btn btn-danger btn-sm" href="/del"><i
+                class="icon ion-minus-round"></i>&nbsp;Удалить кота</a>
         <a class="float-right btn btn-success btn-sm" href="/add"><i
-                class="icon ion-plus-round"></i>&nbsp;Добавить кота</a>
+                class="icon ion-plus-round"></i> Добавить кота</a>
     </div>
 </div>
 <div class="row" style="margin-top: 15px;">

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DEL</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/del" method="POST">
+    <p>Имя: <input type="text" name="name" /></p>
+    <input type="submit" value="Удалить!"/>
+
+</form>
+<p></p>
+<div class="alert alert-danger" role="alert">Неверное имя кота!</div>
+{% endblock %}
+</body>
+</html>

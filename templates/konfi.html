@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Konfidence</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         СПРАВКА
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="spravka">Описание</a>
+      <a class="dropdown-item" href="konf">Конфиденциальность</a>
+    </div>
+  </div>
+</div>
+<p>При поддержке ООН, Все изображения защищены авторским правом</p>
+<img style="height: 400px;width:600px" src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Copyright-_all_rights_reserved.png"/>
+
+{% endblock %}
+</body>
+</html>
